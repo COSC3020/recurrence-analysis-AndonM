@@ -27,6 +27,11 @@ function mystery(n) {
     }
 }
 ```
+
+
+
+
+
 I'M UNSURE AS TO WHY THE MARKDOWN IS NOT RECOGNIZING MY EFFORTS TO START A MATH EXPRESSION. THE SECOND PARAGRAPH SEEMS TO WORK FINE WITH THE STANDARD $ TO START AND END AN EXPRESSION; HOWEVER, THE FIRST PARAGRAPH IS NOT AGREEING.
 
 The base case here is incredibly simple to figure out within the first three lines of code. A simple return for if n <= 1 runs in constant time so we have a time complexity of O(1) regardless. Next, the two recursive calls cut the problem size into 1/3 giving us the following recurrence relation: T(n) = 2*T(n/3). The next (and perhaps most difficult) part revolves around the behavior of the inner loops. Each of the three may run from 0 to $n^2$ times. As I learned in 2030, the time complexity of this should be O($n^5$) as that's what the product of the loops' operations come out to. ($n^2$ for the first, n for the second, and $n^2$ for the third). Finally we see one more recursive call of mystery cutting the problem space into 1/3 again. Putting it all together we get a final reccurence relation of T(n) = 3*T(n/3) + O($n^5$).
