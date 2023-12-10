@@ -39,7 +39,7 @@ Which may be simplified down to:
 
 $27T(n/27)+n^5+(n^5/3^4)+(n^5/9^4)$  
 
-We see a pattern emerges here with every term containing an n^5 in the numerator and each successive term dividing this n^5 by increasing powers of three all raised to the fourth power. Thus, we can represent this behavior with the following sum: $\sum_{n=1}^{i} (1/3)^{4n}$. We can stick an n^5 in front of our sum to account for both the first term and numerator of every term that follows:
+We see a pattern emerges here with every term containing an n^5 in the numerator and each successive term dividing this n^5 by increasing powers of three all raised to the fourth power. Thus, we can represent this behavior with the following sum: $\sum_{n=1}^{i} (1/3)^{4n}$. We can stick an $n^5$ in front of our sum to account for both the first term and numerator of every term that follows:
 
 $n^5 \sum_{n=1}^{i} (1/3)^{4n}$   
 $3^iT(n/3^i)+n^5 \sum_{n=1}^{i} (1/3)^{4n}$   
