@@ -29,4 +29,25 @@ function mystery(n) {
 ```
 The base case here is incredibly simple to figure out within the first three lines of code. A simple return for if n <= 1 runs in constant time so we have a time complexity of O(1) regardless. Next, the two recursive calls cut the problem size into 1/3 giving us the following recurrence relation: T(n) = 2*(T(n/3)). The next (and perhaps most difficult) part revolves around the behavior of the inner loops. Each of the three may run from 0 to $n^2$ times. As I learned in 2030, the time complexity of this should be $O(n^5)$ as that's what the product of the loops' operations come out to. ($n^2$ for the first, n for the second, and $n^2$ for the third). Finally we see one more recursive call of mystery cutting the problem space into 1/3 again. Putting it all together we get a final reccurence relation of $T(n) = 3*T(n/3) + O(n^5)$.
 
-Solving the reccurence relation: Instead of going down the traditional path of utilizing substitution, I decided to give the master theorem a shot. Let's begin by defining our parameters to get started: a = 3, b = 3, and $f(n) = O^5$. Now, we can compare f(n) to $n^{log_b(a)}$. We see that $n^{log_3(3)} = n$. Comparing f(n) to $n^{log_3(3)}$, we see that $f(n) = O(n^5)$ is obviously greater than $n$, which means we are to utilize the third case of the Master Theorem. According to this case, we say that $f(n) = O(n^c)$ where $c > log_b(a)$. Therefore our tight big-O bound is $T(n) = O(f(n)) = O(n^5)$.
+Solving the reccurence relation:
+
+$3T(n/3)+n^5$  
+$9T(n/9)+n^5+3(n/3)^5$  
+$27T(n/27)+n^5+3(n/3)^5+9(n/9)^5$  
+
+Which may be simplified down to:  
+
+$27T(n/27)+n^5+(n^5/3^4)+(n^5/9^4)$  
+
+Rewriting as a summation that runs for i iterations we get:  
+
+$n^5+(n^5/3^4)+(n^5/9^4) => n^5 \sum_{n=1}^{i} (1/3)^{4n}$  
+$3^iT(n/3^i)+n^5 \sum_{n=1}^{i} (1/3)^{4n}$  
+
+Letting $i = log_3n$ our expression becomes:
+
+$nT(1)+n^5 \sum_{n=1}^{log_3n} (1/3)^{4n}$  
+
+We may ignore the sum with $log_3n$ as it's bounded by a constant. In conjuction with discarding lower order terms, we get a final complexity as follows:  
+
+$T(1)+n^5 \in theta(n^5)$
