@@ -41,13 +41,13 @@ $27T(n/27)+n^5+(n^5/3^4)+(n^5/9^4)$
 
 Rewriting as a summation that runs for i iterations we get:  
 
-$n^5+(n^5/3^4)+(n^5/9^4) => n^5 \sum_{n=1}^{i} (1/3)^{4n}$  
-$3^iT(n/3^i)+n^5 \sum_{n=1}^{i} (1/3)^{4n}$  
+$n^5+(n^5/3^4)+(n^5/9^4) => n^5 (\sum_{n=1}^{i} (1/3)^{4n})$  
+$3^iT(n/3^i)+n^5 (\sum_{n=1}^{i} (1/3)^{4n})$  
 
-Letting $i = log_3n$ our expression becomes:
+Letting $i = log_3n$, our expression becomes:  
 
-$nT(1)+n^5 \sum_{n=1}^{log_3n} (1/3)^{4n}$  
+$nT(1)+n^5 (\sum_{n=1}^{log_3n} (1/3)^{4n})$  
 
 We may ignore the sum with $log_3n$ as it's bounded by a constant. In conjuction with discarding lower order terms, we get a final complexity as follows:  
 
-$T(1)+n^5 \in theta(n^5)$
+$T(1)+n^5 \in \theta (n^5)$
